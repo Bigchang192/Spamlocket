@@ -572,7 +572,7 @@ Chào mừng! Đây là bot điều khiển tool zLocket.
 <code>/spam username123</code>
 <code>/spam https://locket.cam/username123</code>
 
-<i>Phát triển bởi https://t.me/BIGKER1</i>
+<i>Phát triển bởi https://t.me/BIGKER1 </i>
 """
 
         markup = types.InlineKeyboardMarkup()
@@ -658,9 +658,18 @@ Chào mừng! Đây là bot điều khiển tool zLocket.
                     thread.start()
 
                 send_message_to_admin("✅ Tất cả threads đã được khởi động! Spam đang chạy...")
+                send_message_to_admin("⏰ Tool sẽ tự động dừng sau 30 giây")
 
-                # Chờ cho đến khi tool_running = False
+                # Đếm ngược 30 giây và tự động dừng
+                start_time = time.time()
+                auto_stop_time = 30  # 30 giây
+                
                 while tool_running and any(t.is_alive() for t in threads):
+                    elapsed = time.time() - start_time
+                    if elapsed >= auto_stop_time:
+                        send_message_to_admin("⏰ Đã hết 30 giây, tự động dừng tool...")
+                        tool_running = False
+                        break
                     time.sleep(1)
 
                 # Dừng tất cả threads
@@ -739,7 +748,7 @@ Chào mừng! Đây là bot điều khiển tool zLocket.
 • Tool sẽ tự động random emoji
 • Sử dụng /stop để dừng tool bất cứ lúc nào
 
-<b>Liên hệ:</b> @BigChang19
+<b>Liên hệ:</b> ADMIN
 """
         bot.reply_to(message, help_text, parse_mode='HTML')
 
@@ -1061,7 +1070,7 @@ def step1_create_account(thread_id, proxy_queue, stop_event):
 
 if __name__ == "__main__":
     # Đặt Bot Token của bạn ở đây
-    BOT_TOKEN = "6373184346:AAGexYKGtv4yzTMr5ef5y7EfO2Y1_738IBw"
+    BOT_TOKEN = "7602313290:AAE1Q9iVtj668mX5uF50G5eGE3RaccLQDoc"
     YOUR_ADMIN_CHAT_ID = "1615483759"  # Thay thế bằng chat ID của bạn
 
     config = zLocket()
