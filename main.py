@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-# Telegram: @wus_team
-# Version: 1.0.7 (Telegram Bot)
-# Github: https://github.com/wusthanhdieu
-# Description: zLocket Tool Open Source - Telegram Bot Version
 
 import sys
 import subprocess
